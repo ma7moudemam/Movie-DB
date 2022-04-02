@@ -26,7 +26,7 @@ function Movies() {
       <div className="row">
         {Movies.map((movie) => {
           return (
-            <div className="col-4 mb-5 " key={movie.id}>
+            <div className="col-3 mb-5 " key={movie.id}>
               <MoviesCard movie={movie}/>
             </div>
           )

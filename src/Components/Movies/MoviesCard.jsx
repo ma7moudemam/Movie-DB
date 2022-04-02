@@ -5,7 +5,7 @@ import './MoviesCard.css'
 function MoviesCard({movie}) {
   return (
     <div>
-    <div className="card h-100" >
+    <div className="card h-100 main-card">
       <img className="card-img-top card-img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.name} />
       <div className="card-body">
         <h4 className="card-title">{movie.title}</h4>
