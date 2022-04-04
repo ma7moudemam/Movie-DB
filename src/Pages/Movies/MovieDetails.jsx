@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { gerMovieDetails } from "../../network/moviesAPIS";
+import { getMovieDetails } from "../../network/moviesAPIS";
 import './MovieDetails.css';
 
 
@@ -11,7 +11,7 @@ function MovieDetails() {
 
     useEffect(() => {
 
-        gerMovieDetails(params.id+APIKEY)
+        getMovieDetails(params.id+APIKEY)
             .then((res) => {
                 console.log(res.data);
                 setMovieDetails(res.data);

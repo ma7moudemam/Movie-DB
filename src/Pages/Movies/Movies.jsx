@@ -1,22 +1,37 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import MoviesCard from '../../Components/Movies/MoviesCard'
 import { axiosInstance } from '../../network/axiosConfig';
+import { getMovies } from '../../network/moviesAPIS';
+import { nextPage, previousPage } from '../../store/actions/pagination';
 
 function Movies() {
 
   const[Movies, setMovies] = React.useState([
-
   ]);
+
+  const pageNumber = useSelector((state) => state.pagination.page_num);
+  const dispatch = useDispatch();
+
+
+  const next = () => {
+    dispatch(nextPage());
+  };
+  const prev = () => {
+    dispatch(previousPage());
+  };
 
 
   useEffect(() => {
-    axiosInstance
-      .get('/movie/popular?api_key=4ec70b10c20ba7dc5e99b9286ea14306').then((res) => {
+    // axiosInstance
+    //   .get('/movie/popular?api_key=4ec70b10c20ba7dc5e99b9286ea14306')
+    getMovies(pageNumber)
+      .then((res) => {
         setMovies(res.data.results)
       }).catch((err) => {
         console.log(err)
       })
-  },[]);
+  },[pageNumber]);
 
 
   return (
@@ -26,7 +41,7 @@ function Movies() {
       <div className="row">
         {Movies.map((movie) => {
           return (
-            <div className="col-3 mb-5 " key={movie.id}>
+             <div className="col-3 mb-5 " key={movie.id}>
               <MoviesCard movie={movie}/>
             </div>
           )
