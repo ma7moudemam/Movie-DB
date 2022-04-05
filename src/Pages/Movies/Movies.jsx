@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import MoviesCard from '../../Components/Movies/MoviesCard'
 import { axiosInstance } from '../../network/axiosConfig';
 import { getMovies } from '../../network/moviesAPIS';
@@ -46,6 +47,25 @@ function Movies() {
             </div>
           )
         })}
+      </div>
+      <div
+        className="pagination"
+        style={{ padding: "2rem", display: "flex", justifyContent: "center" }}
+      >
+         <Link 
+          className="btn btn-primary m-3 p-2"
+          variant="contained"
+          disabled={pageNumber <= 1 ? true : false}
+          sx={{ mx: 2 }}
+          onClick={prev}
+        >
+          prev
+        </Link>
+        <Link
+        className="btn btn-primary m-3 p-2"
+         variant="contained" onClick={next}>
+          next
+        </Link> 
       </div>
       </div>
     </>

@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Movies from "./Pages/Movies/Movies";
+import Favorites from "./Pages/Movies/Favorites";
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/register" component={Register}/>
       <Route path="/movies" exact component={Movies}/>
       <Route path="/movies/:id" component={MovieDetails}/>
+      <Route path="/favorites" component={Favorites}/>
       {/* <Route path="*" component={NotFound}/> */}
       </switch>
     </Router>
